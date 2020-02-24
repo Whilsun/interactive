@@ -1,0 +1,135 @@
+<html>
+<head>
+
+</head>
+
+<body>
+    <div id = "output"> </div>
+    <input type = "text" id="input"> </body>
+    <button id="reset" onclick="document.getElementById('output').innerHTML = ''; document.getElementById('input').value = ''; document.getElementById('form').reset();"> Reset </button>
+    <form id="form" style="display: inline;">
+        Choose Your Code Page:
+        <input name="select" type="radio" id="caps" value="caps" checked="true"> Capitalization </input>
+        <input name="select" type="radio" id="punct" value="punct"> Punctuation</input>
+        <input name="select" type="radio" id="organized" value="organized"> Organized </input>
+        <input name="select" type="radio" id="japan" value="japan"> Japanese </input>
+    </form>
+    
+
+    </form>
+    
+    <style>
+        #output {
+            background-color: cadetblue;
+            margin: 2px 2px 2px 2px;
+            width: auto;
+            height: 47%;
+            font-size: 100px;
+            box-shadow: dimgray 2px 2px 2px;
+            font-family: monospace;
+        }
+
+        #input {
+            background-color: cornflowerblue;
+            margin: 2px 2px 2px 2px;
+            width: 100%;
+            height: 47%;
+            font-size: 100px;
+            text-overflow: initial;
+            white-space: initial;
+            box-shadow: dimgray 2px 2px 2px;
+            font-family: monospace;
+        }
+        #reset{
+            width:30%; 
+            background-color: crimson;
+            height: 5%;
+            font-size: 2em;
+            box-shadow: dimgray 2px 2px 2px;
+        }
+        #form {
+            font-size: 2em;
+            background-color:darkseagreen;
+            padding: 4px 4px 4px 4px;
+            box-shadow: dimgray 2px 2px 2px;
+        }
+    </style>
+
+    <script> 
+        document.onload = changePage('punct');
+        document.getElementById('output').innerHTML = ''; document.getElementById('input').value = ''; document.getElementById('form').reset();
+
+        var inp = document.getElementById("input");
+        var out = document.getElementById("output");
+        var keypress = "";
+        
+        //declare a FRICKTON of variables, used the spreadsheet
+        // var a= "";var b= "";var c= "";var d= "";var e= "";var f= "";var g= "";var h= "";var i= "";var j= "";var k= "";var l= "";var m= "";var n= "";var o= "";var p= "";var q= "";var r= "";var s= "";var t= "";var u= "";var v= "";var w= "";var x= "";var y= "";var z= "";var one= "";var two= "";var three= "";var four= "";var five= "";var six= "";var seven= "";var eight= "";var nine= "";var zero= "";var dash= "";var slash= "";var brackL= "";var brackR= "";var semi= "";var slashR= "";var dot= "";var comma= "";var quest= "";var exlam= "";var at= "";var hash= "";var dollar= "";var perc= "";var cart= "";var and= "";var star= "";var parL= "";var parR= "";var und= "";var plus= "";var braceL= "";var braceR= "";var pipe= "";var colon= "";var htmlL= "";var htmlR= "";
+
+        inp.onkeypress = function (ev) {
+            //dont touch this cause it Just Works. puts the characters on the OUT element.
+            keypress = String.fromCharCode(ev.keyCode);
+            
+            getPage();
+
+            switch(keypress) {
+                //OK SO BASICALLY this just appends the character to OUT, minimized cause its big 
+                case 'a': out.append(a); break;case 'b': out.append(b); break;case 'c': out.append(c); break;case 'd': out.append(d); break;case 'e': out.append(e); break;case 'f': out.append(f); break;case 'g': out.append(g); break;case 'h': out.append(h); break;case 'i': out.append(i); break;case 'j': out.append(j); break;case 'k': out.append(k); break;case 'l': out.append(l); break;case 'm': out.append(m); break;case 'n': out.append(n); break;case 'o': out.append(o); break;case 'p': out.append(p); break;case 'q': out.append(q); break;case 'r': out.append(r); break;case 's': out.append(s); break;case 't': out.append(t); break;case 'u': out.append(u); break;case 'v': out.append(v); break;case 'w': out.append(w); break;case 'x': out.append(x); break;case 'y': out.append(y); break;case 'z': out.append(z); break;case '1': out.append(one); break;case '2': out.append(two); break;case '3': out.append(three); break;case '4': out.append(four); break;case '5': out.append(five); break;case '6': out.append(six); break;case '7': out.append(seven); break;case '8': out.append(eight); break;case '9': out.append(nine); break;case '0': out.append(zero); break;case 'A': out.append(A); break;case 'B': out.append(B); break;case 'C': out.append(C); break;case 'D': out.append(D); break;case 'E': out.append(E); break;case 'F': out.append(F); break;case 'G': out.append(G); break;case 'H': out.append(H); break;case 'I': out.append(I); break;case 'J': out.append(J); break;case 'K': out.append(K); break;case 'L': out.append(L); break;case 'M': out.append(M); break;case 'N': out.append(N); break;case 'O': out.append(O); break;case 'P': out.append(P); break;case 'Q': out.append(Q); break;case 'R': out.append(R); break;case 'S': out.append(S); break;case 'T': out.append(T); break;case 'U': out.append(U); break;case 'V': out.append(V); break;case 'W': out.append(W); break;case 'X': out.append(X); break;case 'Y': out.append(Y); break;case 'Z': out.append(Z); break;case '!': out.append(exclm); break;case '.': out.append(dot); break;case ' ': out.append(" ");
+            }  
+        }
+
+        inp.onkeydown = function (ev) {
+            //makes the backspace key delete a character MIGHT NOT WORK FOR SOME EMOJI (EX FLAGS CAUSE THEYRE MULTI CHARACTER)
+            if(ev.keyCode == 8) {
+                out.innerHTML = out.innerHTML.substr(0, out.innerHTML.length - 1);
+            }
+        }
+
+        function changePage (page){
+            switch(page){
+                case 'punct':
+                    //these are all basically a bunch of variable definitions
+                    //made from sheet generator: sets the page to a generic punctuation page
+                    a= "A";b= "B";c= "C";d= "D";e= "E";f= "F";g= "G";h= "H";i= "I";j= "J";k= "K";l= "L";m= "M";n= "N";o= "O";p= "P";q= "Q";r= "R";s= "S";t= "T";u= "U";v= "V";w= "W";x= "X";y= "Y";z= "Z";one= "1";two= "2";three= "3";four= "4";five= "5";six= "6";seven= "7";eight= "8";nine= "9";zero= "0";A= "-";B= "\\";C= "[";D= "]";E= ";";F= "/";G= ".";H= ",";I= "?";J= "!";K= "@";L= "#";M= "$";N= "%";O= "^";P= "&";Q= "*";R= "(";S= ")";T= "_";U= "+";V= "{";W= "}";X= "|";Y= ":";Z= "<";exclm= ">";dot= ">";                    break;
+                case 'caps':
+                    //defualt page, mostly caps
+                    a= "a";b= "b";c= "c";d= "d";e= "e";f= "f";g= "g";h= "h";i= "i";j= "j";k= "k";l= "l";m= "m";n= "n";o= "o";p= "p";q= "q";r= "r";s= "s";t= "t";u= "u";v= "v";w= "w";x= "x";y= "y";z= "z";one= "0";two= "1";three= "2";four= "3";five= "4";six= "5";seven= "6";eight= "7";nine= "8";zero= "9";A= "A";B= "B";C= "C";D= "D";E= "E";F= "F";G= "G";H= "H";I= "I";J= "J";K= "K";L= "L";M= "M";N= "N";O= "O";P= "P";Q= "Q";R= "R";S= "S";T= "T";U= "U";V= "V";W= "W";X= "X";Y= "Y";Z= "Z";exclm= "!";dot= ".";
+                    break;
+                case 'organized':
+                    //more organized version of Caps
+                    a= "a";b= "b";c= "c";d= "d";e= "e";f= "f";g= "g";h= "h";i= "i";j= "j";k= "k";l= "l";m= "m";n= "n";o= "o";p= "p";q= "q";r= "r";s= "s";t= "t";u= "u";v= "v";w= "w";x= "x";y= "y";z= "z";one= "A";two= "B";three= "C";four= "D";five= "E";six= "F";seven= "G";eight= "H";nine= "I";zero= "J";A= "K";B= "L";C= "M";D= "N";E= "O";F= "P";G= "Q";H= "R";I= "S";J= "T";K= "U";L= "V";M= "W";N= "X";O= "Y";P= "Z";Q= "0";R= "1";S= "2";T= "3";U= "4";V= "5";W= "6";X= "7";Y= "8";Z= "9";exclm= "0";dot= ".";
+                    break;
+                case 'japan':
+                    //64 japanese characters
+                    a= "¥";b= "｡";c= "｢";d= "｣";e= "､";f= "･";g= "ｦ";h= "ｧ";i= "ｨ";j= "ｩ";k= "ｪ";l= "ｫ";m= "ｬ";n= "ｭ";o= "ｮ";p= "ｯ";q= "ｰ";r= "ｱ";s= "ｲ";t= "ｳ";u= "ｴ";v= "ｵ";w= "ｶ";x= "ｷ";y= "ｸ";z= "ｹ";one= "ｺ";two= "ｻ";three= "ｼ";four= "ｽ";five= "ｾ";six= "ｿ";seven= "ﾀ";eight= "ﾁ";nine= "ﾂ";zero= "ﾃ";A= "ﾄ";B= "ﾅ";C= "ﾆ";D= "ﾇ";E= "ﾈ";F= "ﾉ";G= "ﾊ";H= "ﾋ";I= "ﾌ";J= "ﾍ";K= "ﾎ";L= "ﾏ";M= "ﾐ";N= "ﾑ";O= "ﾒ";P= "ﾓ";Q= "ﾔ";R= "ﾕ";S= "ﾖ";T= "ﾗ";U= "ﾘ";V= "ﾙ";W= "ﾚ";X= "ﾛ";Y= "ﾜ";Z= "ﾝ";exclm= "ﾞ";dot= "ﾟ";
+                    break;
+            }
+        }
+
+
+
+
+        //gets selected radio button
+        function getPage() {
+            if(document.getElementById("caps").checked){
+                changePage('caps');
+            }
+            if(document.getElementById("japan").checked){
+                changePage('japan');
+            }
+            if(document.getElementById("organized").checked){
+                changePage('organized');
+            }
+            if(document.getElementById("punct").checked){
+                changePage('punct');
+            }            
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>
