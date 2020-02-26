@@ -4,10 +4,16 @@
 </head>
 
 <body>
-    <div id = "output"> </div>
-    <input type = "text" id="input"> </body>
-    <button id="reset" onclick="document.getElementById('output').innerHTML = ''; document.getElementById('input').value = ''; document.getElementById('form').reset();"> Reset </button>
-    <form id="form" style="display: inline;">
+    <div>
+        <div id = "output"> </div>
+        <div type = "text" id="input"> </div>
+    </div>
+    
+    <button id="reset" onclick="document.getElementById('output').innerHTML = ''; document.getElementById('input').innerHTML = ''; document.getElementById('form').reset();"> Reset </button>
+    
+    
+    <!--HONESTLY IDK IF REMOVING THIS WILL BREAK IT BUT ITS HIDDEN SO DONT BOTHER -->
+    <form id="form" style="display: none;">
         Choose Your Code Page:
         <input name="select" type="radio" id="caps" value="caps" checked="true"> Capitalization </input>
         <input name="select" type="radio" id="punct" value="punct"> Punctuation</input>
@@ -16,29 +22,35 @@
     </form>
     
 
-    </form>
     
+
     <style>
         #output {
             background-color: cadetblue;
             margin: 2px 2px 2px 2px;
-            width: auto;
-            height: 47%;
+            width: 49.5%;
+            height: 94%;
             font-size: 100px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
             box-shadow: dimgray 2px 2px 2px;
             font-family: monospace;
+            float: right;
         }
 
         #input {
             background-color: cornflowerblue;
             margin: 2px 2px 2px 2px;
-            width: 100%;
-            height: 47%;
+            width: 49.5%;
+            height: 94%;
             font-size: 100px;
-            text-overflow: initial;
-            white-space: initial;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
             box-shadow: dimgray 2px 2px 2px;
             font-family: monospace;
+            float: left;
         }
         #reset{
             width:30%; 
@@ -59,13 +71,11 @@
         document.onload = changePage('punct');
         document.getElementById('output').innerHTML = ''; document.getElementById('input').value = ''; document.getElementById('form').reset();
 
-        var inp = document.getElementById("input");
+        var inp = document.getElementsByTagName("BODY")[0];
+        var notInp = document.getElementById("input");
         var out = document.getElementById("output");
         var keypress = "";
         
-        //declare a FRICKTON of variables, used the spreadsheet
-        // var a= "";var b= "";var c= "";var d= "";var e= "";var f= "";var g= "";var h= "";var i= "";var j= "";var k= "";var l= "";var m= "";var n= "";var o= "";var p= "";var q= "";var r= "";var s= "";var t= "";var u= "";var v= "";var w= "";var x= "";var y= "";var z= "";var one= "";var two= "";var three= "";var four= "";var five= "";var six= "";var seven= "";var eight= "";var nine= "";var zero= "";var dash= "";var slash= "";var brackL= "";var brackR= "";var semi= "";var slashR= "";var dot= "";var comma= "";var quest= "";var exlam= "";var at= "";var hash= "";var dollar= "";var perc= "";var cart= "";var and= "";var star= "";var parL= "";var parR= "";var und= "";var plus= "";var braceL= "";var braceR= "";var pipe= "";var colon= "";var htmlL= "";var htmlR= "";
-
         inp.onkeypress = function (ev) {
             //dont touch this cause it Just Works. puts the characters on the OUT element.
             keypress = String.fromCharCode(ev.keyCode);
@@ -74,26 +84,25 @@
 
             switch(keypress) {
                 //OK SO BASICALLY this just appends the character to OUT, minimized cause its big 
-                case 'a': out.append(a); break;case 'b': out.append(b); break;case 'c': out.append(c); break;case 'd': out.append(d); break;case 'e': out.append(e); break;case 'f': out.append(f); break;case 'g': out.append(g); break;case 'h': out.append(h); break;case 'i': out.append(i); break;case 'j': out.append(j); break;case 'k': out.append(k); break;case 'l': out.append(l); break;case 'm': out.append(m); break;case 'n': out.append(n); break;case 'o': out.append(o); break;case 'p': out.append(p); break;case 'q': out.append(q); break;case 'r': out.append(r); break;case 's': out.append(s); break;case 't': out.append(t); break;case 'u': out.append(u); break;case 'v': out.append(v); break;case 'w': out.append(w); break;case 'x': out.append(x); break;case 'y': out.append(y); break;case 'z': out.append(z); break;case '1': out.append(one); break;case '2': out.append(two); break;case '3': out.append(three); break;case '4': out.append(four); break;case '5': out.append(five); break;case '6': out.append(six); break;case '7': out.append(seven); break;case '8': out.append(eight); break;case '9': out.append(nine); break;case '0': out.append(zero); break;case 'A': out.append(A); break;case 'B': out.append(B); break;case 'C': out.append(C); break;case 'D': out.append(D); break;case 'E': out.append(E); break;case 'F': out.append(F); break;case 'G': out.append(G); break;case 'H': out.append(H); break;case 'I': out.append(I); break;case 'J': out.append(J); break;case 'K': out.append(K); break;case 'L': out.append(L); break;case 'M': out.append(M); break;case 'N': out.append(N); break;case 'O': out.append(O); break;case 'P': out.append(P); break;case 'Q': out.append(Q); break;case 'R': out.append(R); break;case 'S': out.append(S); break;case 'T': out.append(T); break;case 'U': out.append(U); break;case 'V': out.append(V); break;case 'W': out.append(W); break;case 'X': out.append(X); break;case 'Y': out.append(Y); break;case 'Z': out.append(Z); break;case '!': out.append(exclm); break;case '.': out.append(dot); break;case ' ': out.append(" ");
-            }  
+                case 'a': out.append(a); notInp.append(a); break;case 'b': out.append(b); notInp.append(b); break;case 'c': out.append(c); notInp.append(c); break;case 'd': out.append(d); notInp.append(d); break;case 'e': out.append(e); notInp.append(e); break;case 'f': out.append(f); notInp.append(f); break;case 'g': out.append(g); notInp.append(g); break;case 'h': out.append(h); notInp.append(h); break;case 'i': out.append(i); notInp.append(i); break;case 'j': out.append(j); notInp.append(j); break;case 'k': out.append(k); notInp.append(k); break;case 'l': out.append(l); notInp.append(l); break;case 'm': out.append(m); notInp.append(m); break;case 'n': out.append(n); notInp.append(n); break;case 'o': out.append(o); notInp.append(o); break;case 'p': out.append(p); notInp.append(p); break;case 'q': out.append(q); notInp.append(q); break;case 'r': out.append(r); notInp.append(r); break;case 's': out.append(s); notInp.append(s); break;case 't': out.append(t); notInp.append(t); break;case 'u': out.append(u); notInp.append(u); break;case 'v': out.append(v); notInp.append(v); break;case 'w': out.append(w); notInp.append(w); break;case 'x': out.append(x); notInp.append(x); break;case 'y': out.append(y); notInp.append(y); break;case 'z': out.append(z); notInp.append(z); break;case '1': out.append(one); notInp.append(one); break;case '2': out.append(two); notInp.append(two); break;case '3': out.append(three); notInp.append(three); break;case '4': out.append(four); notInp.append(four); break;case '5': out.append(five); notInp.append(five); break;case '6': out.append(six); notInp.append(six); break;case '7': out.append(seven); notInp.append(seven); break;case '8': out.append(eight); notInp.append(eight); break;case '9': out.append(nine); notInp.append(nine); break;case '0': out.append(zero); notInp.append(zero); break;case 'A': out.append(A); notInp.append(A); break;case 'B': out.append(B); notInp.append(B); break;case 'C': out.append(C); notInp.append(C); break;case 'D': out.append(D); notInp.append(D); break;case 'E': out.append(E); notInp.append(E); break;case 'F': out.append(F); notInp.append(F); break;case 'G': out.append(G); notInp.append(G); break;case 'H': out.append(H); notInp.append(H); break;case 'I': out.append(I); notInp.append(I); break;case 'J': out.append(J); notInp.append(J); break;case 'K': out.append(K); notInp.append(K); break;case 'L': out.append(L); notInp.append(L); break;case 'M': out.append(M); notInp.append(M); break;case 'N': out.append(N); notInp.append(N); break;case 'O': out.append(O); notInp.append(O); break;case 'P': out.append(P); notInp.append(P); break;case 'Q': out.append(Q); notInp.append(Q); break;case 'R': out.append(R); notInp.append(R); break;case 'S': out.append(S); notInp.append(S); break;case 'T': out.append(T); notInp.append(T); break;case 'U': out.append(U); notInp.append(U); break;case 'V': out.append(V); notInp.append(V); break;case 'W': out.append(W); notInp.append(W); break;case 'X': out.append(X); notInp.append(X); break;case 'Y': out.append(Y); notInp.append(Y); break;case 'Z': out.append(Z); notInp.append(Z); break;case '!': out.append(exclm); notInp.append(exclm); break;case '.': out.append(dot); notInp.append(dot); break;            }  
         }
 
         inp.onkeydown = function (ev) {
             //makes the backspace key delete a character MIGHT NOT WORK FOR SOME EMOJI (EX FLAGS CAUSE THEYRE MULTI CHARACTER)
             if(ev.keyCode == 8) {
                 out.innerHTML = out.innerHTML.substr(0, out.innerHTML.length - 1);
+                notInp.innerHTML = notInp.innerHTML.substr(0, notInp.innerHTML.length - 1);
+
             }
         }
 
+        //THE FIRST CASE IS THE EMOJI, IT WORKS BUT HAS BLOAT SO REALLY YOU CAN JUST IGNORE THIS
         function changePage (page){
             switch(page){
                 case 'punct':
                     //these are all basically a bunch of variable definitions
                     //made from sheet generator: sets the page to a generic punctuation page
-                    a= "A";b= "B";c= "C";d= "D";e= "E";f= "F";g= "G";h= "H";i= "I";j= "J";k= "K";l= "L";m= "M";n= "N";o= "O";p= "P";q= "Q";r= "R";s= "S";t= "T";u= "U";v= "V";w= "W";x= "X";y= "Y";z= "Z";one= "1";two= "2";three= "3";four= "4";five= "5";six= "6";seven= "7";eight= "8";nine= "9";zero= "0";A= "-";B= "\\";C= "[";D= "]";E= ";";F= "/";G= ".";H= ",";I= "?";J= "!";K= "@";L= "#";M= "$";N= "%";O= "^";P= "&";Q= "*";R= "(";S= ")";T= "_";U= "+";V= "{";W= "}";X= "|";Y= ":";Z= "<";exclm= ">";dot= ">";                    break;
-                case 'caps':
-                    //defualt page, mostly caps
-                    a= "a";b= "b";c= "c";d= "d";e= "e";f= "f";g= "g";h= "h";i= "i";j= "j";k= "k";l= "l";m= "m";n= "n";o= "o";p= "p";q= "q";r= "r";s= "s";t= "t";u= "u";v= "v";w= "w";x= "x";y= "y";z= "z";one= "0";two= "1";three= "2";four= "3";five= "4";six= "5";seven= "6";eight= "7";nine= "8";zero= "9";A= "A";B= "B";C= "C";D= "D";E= "E";F= "F";G= "G";H= "H";I= "I";J= "J";K= "K";L= "L";M= "M";N= "N";O= "O";P= "P";Q= "Q";R= "R";S= "S";T= "T";U= "U";V= "V";W= "W";X= "X";Y= "Y";Z= "Z";exclm= "!";dot= ".";
+                    a= "🧍";b= "💧";c= "🌈";d= "🎂";e= "🤢";f= "👰";g= "💖";h= "😂";i= "🐕";j= "🐱";k= "🌳";l= "🏆";m= "🎸";n= "🎮";o= "🏀";p= "⚽";q= "👩";r= "🎵";s= "😀";t= "😐";u= "👏";v= "🤙";w= "👈";x= "👉";y= "👆";z= "🖕";one= "👇";two= "👍";three= "👎";four= "✔️";five= "❌";six= "👁";seven= "👅";eight= "⏲️";nine= "🗣";zero= "💤";A= "💬";B= "❤";C= "🎷";D= "😡";E= "💢";F= "📱";G= "🤝";H= "💰";I= "🍕";J= "🍔";K= "🐦";L= "🚗";M= "➡️";N= "🌎";O= "💥";P= "👽";Q= "💦";R= "🔥";S= "⚡";T= "💀";U= "🚶";V= "👊";W= "💁";X= "💯";Y= "👌";Z= "🤡";exclm= "🎈";dot= "";                case 'caps':
                     break;
                 case 'organized':
                     //more organized version of Caps
@@ -108,7 +117,7 @@
 
 
 
-
+        //IDK IF REMOVING THIS WILL BREAK IT BUT I REMOVED THE FRONTEND PART SO LIKE JUST IGNORE IT
         //gets selected radio button
         function getPage() {
             if(document.getElementById("caps").checked){
